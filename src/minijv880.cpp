@@ -170,11 +170,11 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
     }
   }
 
-  if (m_KompleteKontrol != 0) {
-    m_KompleteKontrol->Update();
+  //if (m_KompleteKontrol != 0) {
+  //  m_KompleteKontrol->Update();
 
     uint32_t btn = 0;
-    if (m_KompleteKontrol->status.left)
+  /*  if (m_KompleteKontrol->status.left)
       btn |= 1 << MCU_BUTTON_CURSOR_L;
     else
       btn &= ~(1 << MCU_BUTTON_CURSOR_L);
@@ -230,9 +230,10 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
       btn |= 1 << MCU_BUTTON_RHYTHM;
     else
       btn &= ~(1 << MCU_BUTTON_RHYTHM);
+  */
     mcu.mcu_button_pressed = btn;
 
-    if (m_KompleteKontrol->status.jstick_val > lastEncoderPos ||
+/*    if (m_KompleteKontrol->status.jstick_val > lastEncoderPos ||
         (lastEncoderPos == 15 && m_KompleteKontrol->status.jstick_val == 0))
       mcu.MCU_EncoderTrigger(1);
     else if (m_KompleteKontrol->status.jstick_val < lastEncoderPos ||
@@ -240,6 +241,7 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
               m_KompleteKontrol->status.jstick_val == 15))
       mcu.MCU_EncoderTrigger(0);
     lastEncoderPos = m_KompleteKontrol->status.jstick_val;
+*/
 
     for (size_t y = 0; y < 32; y++) {
       for (size_t x = 0; x < 128; x++) {
@@ -289,7 +291,7 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
     }
   }
 
-  if (m_KompleteKontrol == 0) {
+/*  if (m_KompleteKontrol == 0) {
     m_KompleteKontrol =
         (CUSBKompleteKontrolDevice *)CDeviceNameService::Get()->GetDevice(
             "kompletekontrol1", FALSE);
@@ -298,16 +300,8 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
       m_KompleteKontrol->RegisterRemovedHandler(DeviceRemovedHandler, this);
 
       m_KompleteKontrol->DisableLocalControls();
-      // m_KompleteKontrol->SendLEDs();
-
-      // u8 content[256] = {0};
-      // for (size_t i = 0; i < 256; i++) {
-      //   content[i] = 0xff;
-      // }
-      // m_KompleteKontrol->SendScreenUpper(content);
-      // m_KompleteKontrol->SendScreenLower(content);
     }
-  }
+  } */
 }
 
 void CMiniJV880::USBMIDIMessageHandler(unsigned nCable, u8 *pPacket,
@@ -325,8 +319,8 @@ void CMiniJV880::DeviceRemovedHandler(CDevice *pDevice, void *pContext) {
 
   if (pDevice == pThis->m_pMIDIDevice)
     pThis->m_pMIDIDevice = 0;
-  if (pDevice == pThis->m_KompleteKontrol)
-    pThis->m_KompleteKontrol = 0;
+/*  if (pDevice == pThis->m_KompleteKontrol)
+    pThis->m_KompleteKontrol = 0; */
 }
 
 // double avg = 0;
