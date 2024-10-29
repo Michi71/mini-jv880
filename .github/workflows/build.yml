@@ -76,7 +76,7 @@ jobs:
            zip -r ../MiniJV880_$GITHUB_RUN_NUMBER_$(date +%Y-%m-%d)-$(git rev-parse --short HEAD).zip *
            echo "artifactName=MiniJV880_$GITHUB_RUN_NUMBER_$(date +%Y-%m-%d)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
            cd -
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: ${{ env.artifactName }} # Exported above
         path: ./sdcard/*
