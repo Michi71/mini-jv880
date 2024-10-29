@@ -20,7 +20,9 @@
 #ifndef _minijv880_h
 #define _minijv880_h
 
+#ifndef ARM_ALLOW_MULTI_CORE
 #define ARM_ALLOW_MULTI_CORE
+#endif
 
 #include "config.h"
 #include "emulator/mcu.h"
