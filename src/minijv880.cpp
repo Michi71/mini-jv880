@@ -243,7 +243,7 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
     lastEncoderPos = m_KompleteKontrol->status.jstick_val;
 */
 
-    for (size_t y = 0; y < 32; y++) {
+/*    for (size_t y = 0; y < 32; y++) {
       for (size_t x = 0; x < 128; x++) {
         int destX = (int)(((float)x / 128) * 820);
         int destY = (int)(((float)y / 32) * 100);
@@ -259,14 +259,12 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
         }
 
         bool pixel = sum > 0;
-        // bool pixel = mcu.lcd.lcd_buffer[destY][destX] == lcd_col1;
         set_pixel(screen_buffer, x, y, pixel);
-
-        // m_ScreenUnbuffered->SetPixel(x + 800, y + 300, pixel ? 0xFFFF : 0x0000);
       }
     }
+*/
 
-    KompleteKontrolScreenCommand tmp;
+/*    KompleteKontrolScreenCommand tmp;
     for (size_t row = 0; row < 4; row++) {
       for (size_t column = 0; column < 4; column++) {
         tmp.lengthRow = 1;
@@ -276,8 +274,8 @@ void CMiniJV880::Process(bool bPlugAndPlayUpdated) {
         memcpy(tmp.content, screen_buffer + row * 128 + column * 32, 32);
         m_KompleteKontrol->SendScreen(&tmp);
       }
-    }
-  }
+    }  
+  } */
 
   if (!bPlugAndPlayUpdated)
     return;
